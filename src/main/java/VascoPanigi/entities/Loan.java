@@ -10,6 +10,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "loan")
+@NamedQuery(name = "findCurrentlyLent", query = "SELECT i FROM Loan i WHERE i.loan_ending_date IS NOT NULL")
+@NamedQuery(name = "findExpiredLoans", query = "SELECT l FROM Loan l WHERE l.loan_estimated_ending_date < CURRENT_DATE AND l.loan_ending_date IS NULL")
 public class Loan {
     @Id
     @GeneratedValue
@@ -26,7 +28,6 @@ public class Loan {
     @JoinColumn(name = "catalogue_id")
     private Catalogue catalogue;
 
-
     private LocalDate loan_start_date;
     private LocalDate loan_estimated_ending_date;
     private LocalDate loan_ending_date;
@@ -41,11 +42,9 @@ public class Loan {
         this.loan_ending_date = null;
     }
 
-
     public UUID getId() {
         return id;
     }
-
 
     public User getUser() {
         return user;

@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @DiscriminatorValue("book")
 public class Book extends Catalogue {
@@ -51,7 +50,7 @@ public class Book extends Catalogue {
                 "author='" + author + '\'' +
                 ", genre='" + genre + '\'' +
                 ", totalPages=" + totalPages +
-                ", publicationYear=" + publicationYear +
+                ", publicationYear=" + publication_year +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 '}';

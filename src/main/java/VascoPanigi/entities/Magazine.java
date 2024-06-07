@@ -41,7 +41,7 @@ public class Magazine extends Catalogue {
         return "Magazine{" +
                 "periodicity=" + periodicity +
                 ", totalPages=" + totalPages +
-                ", publicationYear=" + publicationYear +
+                ", publicationYear=" + publication_year +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
                 '}';

@@ -10,6 +10,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -35,22 +36,20 @@ public class Application {
 //        ad.save(jerry);
 //        ad.save(gabibbo);
 
-//         Loan loan2 = new Loan(ad.findById(UUID.fromString("2e833e3c-560e-49b9-a189-3ae8230f4733")), cd.findById(UUID.fromString("2c5886b1-001d-4927-94d3-15204220fc79")), LocalDate.of(2024, 2, 10));
+//         Loan loan8 = new Loan(ad.findById(UUID.fromString("fb9ec68f-39c6-4ad1-ae87-72230f53c86d")), cd.findById(UUID.fromString("9312288c-7ac8-4924-b4e8-921f48d34cad")), LocalDate.of(2024, 4, 10));
 //         Loan loan3 = new Loan(ad.findById(UUID.fromString("2e833e3c-560e-49b9-a189-3ae8230f4733")), cd.findById(UUID.fromString("5ce564b1-b94a-40c3-b201-96329faa47fd")), LocalDate.of(2020, 9, 30));
-//         Loan loan4 = new Loan(ad.findById(UUID.fromString("655665e2-9851-4252-897f-b5d8ebf54d9d")), cd.findById(UUID.fromString("9318b803-ad22-4921-84d1-075b3eb96198")), LocalDate.of(2015, 6, 15));
-//         Loan loan5 = new Loan(ad.findById(UUID.fromString("655665e2-9851-4252-897f-b5d8ebf54d9d")), cd.findById(UUID.fromString("884ae96f-412d-4ff6-b5d9-03fe6697fd04")), LocalDate.of(2024, 5, 7));
-//         Loan loan2 = new Loan("2e833e3c-560e-49b9-a189-3ae8230f4733", "2c5886b1-001d-4927-94d3-15204220fc79", LocalDate.of(2024, 6, 15));
 
-//        ld.save(loan2);
-//        ld.save(loan3);
 //        ld.save(loan4);
 //        ld.save(loan5);
 
-
+//----------------------WORKING METHODS-------------------------------
+        
 //        ld.updateLoanEndingDate(UUID.fromString("654cd7e7-bec5-42c6-9223-fb41fc6590b4"), LocalDate.of(2025, 3, 10));
-
-            cd.findByIdAndDelete(UUID.fromString("fed79374-b3cb-4c74-a1db-423a2d2749c5"));
-
-
+//        cd.findByName("book").forEach(System.out::println);
+//        cd.findByYear(1989).forEach(System.out::println);
+//        cd.findByAuthor("author").forEach(System.out::println);
+//        ld.findCurrentlyLent().forEach(System.out::println);
+//        cd.findByUserCardNumber(UUID.fromString("2e833e3c-560e-49b9-a189-3ae8230f4733")).forEach(System.out::println);
+//        ld.findExpiredLoans().forEach(System.out::println);
     }
 }

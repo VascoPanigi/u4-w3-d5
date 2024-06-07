@@ -8,15 +8,23 @@ import java.util.UUID;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "item_type")
+
+@NamedQueries({
+        @NamedQuery(name = "findByName", query = "SELECT i FROM Catalogue i WHERE i.title LIKE :title"),
+        @NamedQuery(name = "findByYear", query = "SELECT i FROM Catalogue i WHERE i.publication_year = :publication_year"),
+        @NamedQuery(name = "findByAuthor", query = "SELECT i FROM Catalogue i WHERE i.author LIKE :author"),
+        @NamedQuery(name = "findByUserCardNumber", query = "SELECT i FROM Catalogue i JOIN i.loan l WHERE l.user.card_number = :card_number")
+
+})
 public abstract class Catalogue {
 
     @Id
     @GeneratedValue
     protected UUID isbn;
 
-
     protected String title;
-    protected int publicationYear;
+
+    protected int publication_year;
     protected int totalPages;
 
     // bidirectional mapping daje
@@ -29,7 +37,7 @@ public abstract class Catalogue {
 
     public Catalogue(int totalPages, int publicationYear, String title) {
         this.totalPages = totalPages;
-        this.publicationYear = publicationYear;
+        this.publication_year = publicationYear;
         this.title = title;
     }
 
@@ -63,13 +71,12 @@ public abstract class Catalogue {
         this.title = title;
     }
 
-    public int getPublicationYear() {
-        return publicationYear;
+    public int getPublication_year() {
+        return publication_year;
     }
 
-    public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
+    public void setPublication_year(int publication_year) {
+        this.publication_year = publication_year;
     }
-
 
 }
