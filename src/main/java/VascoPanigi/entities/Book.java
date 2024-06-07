@@ -2,12 +2,19 @@ package VascoPanigi.entities;
 
 import com.github.javafaker.Faker;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@DiscriminatorValue("book")
 public class Book extends Catalogue {
     protected String author;
     protected String genre;
 
-    public Book(int totalPages, int publicationYear, String title, String isbn, String genre, String author) {
-        super(totalPages, publicationYear, title, isbn);
+    public Book(){}
+
+    public Book(int totalPages, int publicationYear, String title, String genre, String author) {
+        super(totalPages, publicationYear, title);
         this.genre = genre;
         this.author = author;
     }
@@ -21,7 +28,6 @@ public class Book extends Catalogue {
         Faker faker = new Faker();
         return faker.book().author();
     }
-
 
     public String getAuthor() {
         return author;

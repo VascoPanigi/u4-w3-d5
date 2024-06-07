@@ -3,12 +3,22 @@ package VascoPanigi.entities;
 import VascoPanigi.enums.Periodicity;
 
 import java.util.Random;
+import jakarta.persistence.*;
 
+
+@Entity
+@DiscriminatorValue("magazine")
 public class Magazine extends Catalogue {
+
+    @Column(name = "magazine_periodicity")
+    @Enumerated(EnumType.STRING)
     protected Periodicity periodicity;
 
-    public Magazine(int totalPages, int publicationYear, String title, String isbn, Periodicity periodicity) {
-        super(totalPages, publicationYear, title, isbn);
+    public Magazine() {
+    }
+
+    public Magazine(int totalPages, int publicationYear, String title, Periodicity periodicity) {
+        super(totalPages, publicationYear, title);
         this.periodicity = periodicity;
     }
 

@@ -1,31 +1,32 @@
 package VascoPanigi.entities;
 
-import com.github.javafaker.Faker;
+import jakarta.persistence.*;
 
 import java.util.Random;
+import java.util.UUID;
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "item_type")
 public abstract class Catalogue {
-    protected String isbn;
+
+    @Id
+    @GeneratedValue
+    protected UUID isbn;
+
+
     protected String title;
     protected int publicationYear;
     protected int totalPages;
 
-    public Catalogue(int totalPages, int publicationYear, String title, String isbn) {
+    public Catalogue(){
+    }
+
+
+    public Catalogue(int totalPages, int publicationYear, String title) {
         this.totalPages = totalPages;
         this.publicationYear = publicationYear;
         this.title = title;
-        this.isbn = isbn;
-    }
-
-    public static String generateIsbn() {
-        Faker faker = new Faker();
-        return faker.code().isbn10(true);
-    }
-
-    public static String generateTitle() {
-        Faker faker = new Faker();
-        return faker.book().title();
     }
 
     public static int generateYear() {
@@ -38,12 +39,8 @@ public abstract class Catalogue {
         return random.nextInt(1, 2000);
     }
 
-    public String getIsbn() {
+    public UUID getIsbn() {
         return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
     }
 
     public int getTotalPages() {
