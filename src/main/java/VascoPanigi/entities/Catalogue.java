@@ -19,9 +19,13 @@ public abstract class Catalogue {
     protected int publicationYear;
     protected int totalPages;
 
+    // bidirectional mapping daje
+
+    @OneToOne(mappedBy = "catalogue")
+    private Loan loan;
+
     public Catalogue(){
     }
-
 
     public Catalogue(int totalPages, int publicationYear, String title) {
         this.totalPages = totalPages;
